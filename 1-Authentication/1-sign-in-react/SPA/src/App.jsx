@@ -5,6 +5,7 @@ import { IdTokenData } from './components/DataDisplay';
 import { loginRequest } from './authConfig';
 
 import './styles/App.css';
+import OnboardUserData from "./components/OnboardUserData";
 
 /**
  * Most applications will need to conditionally render certain components based on whether a user is signed in or not. 
@@ -34,6 +35,7 @@ const MainContent = () => {
             <AuthenticatedTemplate>
                 {activeAccount ? (
                     <Container>
+                        <OnboardUserData style={{marginBottom: 30}} />
                         <IdTokenData idTokenClaims={activeAccount.idTokenClaims} />
                     </Container>
                 ) : null}

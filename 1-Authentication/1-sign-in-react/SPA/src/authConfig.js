@@ -11,10 +11,21 @@ import { LogLevel } from '@azure/msal-browser';
  * https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser/docs/configuration.md 
  */
 
+export const b2cPolicies = {
+    authorities: {
+        signUpSignIn: {
+            authority: "https://myradar.b2clogin.com/api.myradar.dev/B2C_1_SIGNIN_SIGNUP_V2",
+        }
+    },
+    authorityDomain: "myradar.b2clogin.com",
+}
+
+
 export const msalConfig = {
     auth: {
-        clientId: 'Enter_the_Application_Id_Here', // This is the ONLY mandatory field that you need to supply.
-        authority: 'https://Enter_the_Tenant_Subdomain_Here.ciamlogin.com/', // Replace the placeholder with your tenant subdomain 
+        clientId: 'c9c782fb-e6c3-4091-b274-c51ef1962cf6', // This is the ONLY mandatory field that you need to supply.
+        authority: b2cPolicies.authorities.signUpSignIn.authority, // Replace the placeholder with your tenant subdomain
+        knownAuthorities: [b2cPolicies.authorityDomain],
         redirectUri: '/', // Points to window.location.origin. You must register this URI on Azure Portal/App Registration.
         postLogoutRedirectUri: '/', // Indicates the page to navigate after logout.
         navigateToLoginRequestUrl: false, // If "true", will navigate back to the original request location before processing the auth code response.

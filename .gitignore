@@ -110,3 +110,6 @@ dist/
 .vs/
 bin/
 obj/
+
+# JetBrains
+.idea/
